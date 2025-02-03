@@ -1,8 +1,6 @@
 from email.mime import image
 from tkinter import *
 from tkinter import filedialog
-from tkinter.filedialog import askopenfilename
-
 from PIL import Image, ImageDraw, ImageFont
 
 window = Tk()
@@ -10,25 +8,28 @@ window.title("Image Watermarking")
 window.minsize(width=500, height=350)
 
 # TODO 1: change text fill
-# TODO 2: add and change show img button and change select image button
 
 def watermark_image(name_of_file):
 
     # opening image to work with
     opened_image = Image.open(name_of_file)
+    opened_image = opened_image.convert("RGBA")
     # selecting width and height at image resolution
     image.width, image.height = opened_image.size
-    draw = ImageDraw.Draw(opened_image)
 
+    overlay = Image.new('RGBA', opened_image.size, (255,255, 255, 0))
+    draw = ImageDraw.Draw(overlay)
     font_size = int(opened_image.width / 8)
     font = ImageFont.truetype("arial.ttf", font_size)
 
     x, y = int(opened_image.width / 2), int(opened_image.height / 2)
 
     draw.text((x, y), text.get("1.0", "end-1c"),
-              font=font, fill="#FFF", stroke_width=2, stroke_fill="#222", anchor="mm")
+              font=font, fill=(255,255,255,120),stroke_width=2, anchor="ms", stroke_fill=(0,0,0,50))
 
-    opened_image.show()
+    watermarked_image = Image.alpha_composite(opened_image, overlay)
+
+    watermarked_image.show()
 
 
 class ImageWatermarking:
