@@ -4,4 +4,4 @@ Its simple image watermarketing, which you can write your text, then select img 
 I coded this in VSC and in PyCharm some packages will not work.
 For this project I used PILLOW for opening and editing images and Tkinter for GUI.
   
-![Screenshot of program running](https://github.com/NiebianskoLicy/Tic-Tac-Toe/blob/main/Tic_Tac_Toe_img.png)
+![Screenshot of program running](https://github.com/NiebianskoLicy/image_watermarking/blob/main/image_watermarking_img.png)
