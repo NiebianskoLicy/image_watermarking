@@ -1,4 +1,3 @@
-from email.mime import image
 from tkinter import *
 from tkinter import filedialog
 from PIL import Image, ImageDraw, ImageFont
@@ -14,7 +13,7 @@ def watermark_image(name_of_file):
     opened_image = Image.open(name_of_file)
     opened_image = opened_image.convert("RGBA")
     # selecting width and height at image resolution
-    image.width, image.height = opened_image.size
+    width, height = opened_image.size
 
     # adding overlay to image
     overlay = Image.new('RGBA', opened_image.size, (255,255, 255, 0))
